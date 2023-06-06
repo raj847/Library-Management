@@ -50,7 +50,7 @@ func (b *BookRepository) GetAllBook(ctx context.Context) ([]entity.BookRead, err
 
 	var books []entity.BookRead
 
-	err := b.db.WithContext(ctx).Table("books").Preload("Authors").Where("deleted_at IS NULL").Find(&books).Error
+	err := b.db.WithContext(ctx).Table("books").Select("*").Preload("Authors").Where("deleted_at IS NULL").Find(&books).Error
 	if err != nil {
 		return nil, err
 	}
