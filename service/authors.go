@@ -16,7 +16,7 @@ func NewAuthorService(aRepo *repository.AuthorRepository) *AuthorService {
 	}
 }
 
-func (a *AuthorService) GetAllAuthor(ctx context.Context) ([]entity.Author, error) {
+func (a *AuthorService) GetAllAuthor(ctx context.Context) ([]entity.AuthorRead, error) {
 	return a.aRepo.GetAllAuthor(ctx)
 }
 
@@ -28,7 +28,7 @@ func (a *AuthorService) AddAuthor(ctx context.Context, author entity.Author) (en
 	return author, nil
 }
 
-func (a *AuthorService) GetAuthorByID(ctx context.Context, id int) (entity.Author, error) {
+func (a *AuthorService) GetAuthorByID(ctx context.Context, id int) (entity.AuthorRead, error) {
 	return a.aRepo.GetAuthorByID(ctx, id)
 }
 
