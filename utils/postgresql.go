@@ -25,6 +25,7 @@ func ConnectDB() error {
 		entity.Author{},
 		entity.Book{},
 		entity.Mapping{},
+		entity.User{},
 	)
 
 	SetupDBConnection(conn)
