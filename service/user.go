@@ -26,7 +26,6 @@ var (
 	ErrUserAlreadyExists     = errors.New("user already exists")
 	ErrUserInvalid           = errors.New("username invalid")
 	ErrPasswordInvalid       = errors.New("password invalid")
-	ErrEmailInvalid          = errors.New("email invalid")
 )
 
 func (s *UserService) AddUser(ctx context.Context, userReq entity.UserLoginReg) (entity.User, error) {

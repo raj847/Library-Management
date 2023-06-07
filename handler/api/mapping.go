@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"testing/entity"
 	"testing/service"
@@ -39,6 +40,10 @@ func (a *MappingAPI) CreateNewMapping(w http.ResponseWriter, r *http.Request) {
 	}
 	_, err = a.mappingService.AddMapping(r.Context(), mapping)
 	if err != nil {
+		if errors.Is(err, service.ErrDataMapping) {
+			WriteJSON(w, http.StatusNotFound, entity.NewErrorResponse(err.Error()))
+			return
+		}
 		WriteJSON(w, http.StatusInternalServerError, entity.NewErrorResponse("error internal server"))
 		return
 	}
